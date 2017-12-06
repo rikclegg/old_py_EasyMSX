@@ -5,7 +5,6 @@ Created on 22 May 2017
 '''
 from EasyMSX import EasyMSX
 
-
 class MyApp:
     
     def __init__(self):
@@ -14,7 +13,6 @@ class MyApp:
         self.easyMSX = EasyMSX()
     
         print("EasyMSX loaded....")
-    
     
         print("\nTeams:")
     
@@ -42,12 +40,12 @@ class MyApp:
     def printOrderBlotter(self):
         print("\nOrder Blotter: \n")
         for o in self.easyMSX.orders:
-            print(o.field("EMSX_SIDE").value() + "\t" + o.field("EMSX_SEQUENCE").value() + "\t" + o.field("EMSX_STATUS").value() + "  \t" + o.field("EMSX_TICKER").value() + "\t" + o.field("EMSX_AMOUNT").value() + "\t" + o.field("EMSX_TIF").value())
+            print("Side: " + o.field("EMSX_SIDE").value() + "\tSequence No.: " + o.field("EMSX_SEQUENCE").value() + "\tStatus: " + o.field("EMSX_STATUS").value() + " \tTicker: " + o.field("EMSX_TICKER").value() + "\tAmount: " + o.field("EMSX_AMOUNT").value() + "\tTIF: " + o.field("EMSX_TIF").value())
                         
     def printRouteBlotter(self):
         print("\nRoute Blotter: \n")
         for r in self.easyMSX.routes:
-            print(r.field("EMSX_SEQUENCE").value() + "\t" + r.field("EMSX_ROUTE_ID").value() + "\t" + r.field("EMSX_STATUS").value() + "  \t" + r.field("EMSX_WORKING").value() + "\t" + r.field("EMSX_FILLED").value() + "\t" + r.field("EMSX_AVG_PRICE").value())
+            print("Sequence No.: " + r.field("EMSX_SEQUENCE").value() + "\tRoute ID: " + r.field("EMSX_ROUTE_ID").value() + "\tStatus: " + r.field("EMSX_STATUS").value() + "  \tWorking: " + r.field("EMSX_WORKING").value() + "\tFilled: " + r.field("EMSX_FILLED").value() + "\tAverage Price: " + r.field("EMSX_AVG_PRICE").value())
 
     
     def processNotification(self,notification):
