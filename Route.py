@@ -1,6 +1,7 @@
 # Route.py
 
 from Fields import Fields
+from Notification import Notification
 
 class Route:
     
@@ -23,3 +24,7 @@ class Route:
                 h(notification)
         if not notification.consumed: 
             self.parent.notify(notification)
+
+    def getNotificationCategory(self):
+        return Notification.NotificationCategory.ROUTE
+    

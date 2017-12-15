@@ -16,6 +16,7 @@ class MyApp:
     
         print("\nTeams:")
     
+        '''
         for t in self.easyMSX.teams:
             print(t.name)
         
@@ -28,6 +29,8 @@ class MyApp:
                 for p in s.parameters:
                     print("\t\tParameter: " + p.name)
     
+        '''
+        
         self.easyMSX.orders.addNotificationHandler(self.processNotification)
         self.easyMSX.routes.addNotificationHandler(self.processNotification)
 
@@ -51,13 +54,13 @@ class MyApp:
     def processNotification(self,notification):
         if notification.category == EasyMSX.NotificationCategory.ORDER:
             print("\nChange to Order (" + EasyMSX.NotificationType.asText(notification.type) + "): " + notification.source.field("EMSX_SEQUENCE").value())
-            self.printFieldChanges(notification.fieldChanges)
-            self.printOrderBlotter()
+            #self.printFieldChanges(notification.fieldChanges)
+            #self.printOrderBlotter()
 
         elif notification.category == EasyMSX.NotificationCategory.ROUTE:
             print("\nChange to Route (" + EasyMSX.NotificationType.asText(notification.type) + "): " + notification.source.field("EMSX_SEQUENCE").value() + "/" + notification.source.field("EMSX_ROUTE_ID").value())
-            self.printFieldChanges(notification.fieldChanges)
-            self.printRouteBlotter()
+            #self.printFieldChanges(notification.fieldChanges)
+            #self.printRouteBlotter()
             
         notification.consume=True
 

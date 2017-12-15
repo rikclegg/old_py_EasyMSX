@@ -14,6 +14,7 @@ class Notification:
         DELETE=3
         CANCEL=4
         ERROR=5
+        FIELD=6
         
     def __init__(self,notificationCategory,notificationType,notificationSource,fieldChanges=[],errorCode=0,errorMessage=""):
         self.category = notificationCategory

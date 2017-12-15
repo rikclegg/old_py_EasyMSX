@@ -1,6 +1,7 @@
 # Order.py
 
 from Fields import Fields
+from Notification import Notification
 
 class Order:
     
@@ -23,3 +24,7 @@ class Order:
         if not notification.consumed: 
             self.parent.notify(notification)
             
+    def getNotificationCategory(self):
+        return Notification.NotificationCategory.ORDER
+    
+    

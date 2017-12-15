@@ -1,6 +1,7 @@
 # Field.py
 
 from FieldChange import FieldChange
+from Notification import *
 
 class Field:
     
@@ -9,6 +10,7 @@ class Field:
         self.__name = name
         self.__current_value = value
         self.__old_value = ""
+        self.notificationHandlers = []
         
     def value(self):
         return self.__current_value
@@ -20,6 +22,8 @@ class Field:
         if self.__current_value != value:
             self.currentToOld
             self.__current_value = value
+            self.notify(Notification(self.parent.owner.getNotificationCategory(), Notification.NotificationType.FIELD, self.parent.owner, [self.getFieldChanged()]))                     
+            
             
     def currentToOld(self):
         self.__old_value = self.__current_value
@@ -32,4 +36,13 @@ class Field:
         else:
 #            print("Field NOT changed   Old: " + self.__old_value + "\t New: " + self.__current_value) 
             return None
+        
+    def addNotificationHandler(self,handler):
+        self.notificationHandlers.append(handler)
+        
+    def notify(self, notification):
+        for h in self.notificationHandlers:
+            if not notification.consumed: 
+                h(notification)
+
         
